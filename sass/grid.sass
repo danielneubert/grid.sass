@@ -1,0 +1,190 @@
+/*! grid.sass v1.0.0 | MIT Licence | github.com/danielneubert/grid.sass */
+
+// ============================================================
+// Configuration values (defaults)
+// ============================================================
+
+// ------------------------------------------------------------
+// Flex Auto Columns
+// =================
+// 
+// If true, the .grid--flex class gets injected, too.
+//
+// @var {Boolean}
+// ------------------------------------------------------------
+$grid-sass--flex: true !default
+
+// ------------------------------------------------------------
+// Columns
+// =======
+// 
+// Amount of columns your layout has.
+//
+// @var {Number}
+// ------------------------------------------------------------
+$grid-sass--columns: 12 !default
+
+// ------------------------------------------------------------
+// Gaps
+// ====
+// 
+// A Sass map that contains all your gap-values with
+// their breakpoint. (A `null`-key item is required)
+// > Note: Only add a key-value pair, when the value
+//         changes.
+//
+// @var {Map}
+// ------------------------------------------------------------
+$grid-sass--gaps: (null: 2rem, '--t': 1rem) !default
+
+// ------------------------------------------------------------
+// Breakpoints
+// ===========
+// 
+// A Sass map containing all available breakpoints
+// for your layout. You can modify this to your needs
+// with any amounts. (A `null:null` pair is required)
+// 
+// @var {Map}
+// ------------------------------------------------------------
+$grid-sass--breakpoints: (null: null, '--t': '(max-width: 1299px)', '--m': '(max-width: 699px)') !default
+
+
+
+// ============================================================
+// Functions and mixins
+// ============================================================
+
+/// Returns the recent matching gap. If strcit mode, it returns
+/// null for undefined gaps.
+/// 
+/// @param {String|Null} $call
+///     The responsive call that should be compared for.
+/// @param {Boolean} $strict: false
+///     Return `null` if the searched gap is undefined.
+/// @return {Length with unit}
+@function grid-sass--gap($call, $strict: false)
+    $gap: map-get($grid-sass--gaps, $call)
+
+    @if $gap or $strict
+        @return $gap
+
+    @each $loopCall, $loopRule in $grid-sass--breakpoints
+        $tempGap: map-get($grid-sass--gaps, $loopCall)
+        @if $tempGap
+            $gap: $tempGap
+        @if $loopCall == $call
+            @return $gap
+    @return $gap
+
+/// Inserts the required media-query if the passed rule is not
+/// `null`.
+/// 
+/// @param {String|Null} $rule
+///     The rule for the media-query
+/// @return {Length with unit}
+=grid-sass--responsive($rule)
+    @if $rule == null
+        @content
+    @else
+        @media #{$rule}
+            @content
+
+/// Inserts the required media-query if the given call also
+/// contains an gap.
+/// 
+/// @param {String|Null} $call
+///     The responsive call that should be compared for.
+/// @param {String|Null} $rule
+///     The rule for the media-query
+/// @param {String|Null} $parentCall
+///     Minimum call required
+/// @return {Length with unit}
+=grid-sass--responsive-gap($call, $rule, $parentCall: null)
+    @if $parentCall == null
+        @if grid-sass--gap($call, true)
+            +grid-sass--responsive($rule)
+                @content
+    @else
+        $found: null
+        @each $loopCall, $loopRule in $grid-sass--breakpoints
+            @if ($found == null and $loopCall == $parentCall)
+                $found: $loopCall
+            @if $found
+                @if $loopCall == $call and $call == $parentCall
+                    +grid-sass--responsive($rule)
+                        @content
+                @else
+                    @if $loopCall == $call
+                        @if grid-sass--gap($loopCall, true)
+                            +grid-sass--responsive($loopRule)
+                                @content
+
+
+
+// ============================================================
+// Classes
+// ============================================================
+
+.grid
+    // --------------------------------------------------------
+    // Default flex-setup for .grid--flex and older browsers
+    // --------------------------------------------------------
+    display: flex
+    flex-wrap: wrap
+    @each $call, $rule in $grid-sass--breakpoints
+        +grid-sass--responsive-gap($call, $rule)
+            margin: -#{grid-sass--gap($call)} -#{(grid-sass--gap($call) / 2)} 0
+    
+    & > *
+        @each $call, $rule in $grid-sass--breakpoints
+            +grid-sass--responsive-gap($call, $rule)
+                width: calc(100% / #{$grid-sass--columns} - #{grid-sass--gap($call)})
+                margin: #{grid-sass--gap($call)} #{(grid-sass--gap($call) / 2)} 0
+        &.grid
+            margin: 0
+            width: 100%
+
+    @each $call, $rule in $grid-sass--breakpoints
+        +grid-sass--responsive($rule)
+            @for $index from 1 through $grid-sass--columns
+                &--span-#{$index}#{$call}
+                    width: calc(100% / (#{$grid-sass--columns} / #{$index}) - #{grid-sass--gap($call)} - 1px)
+            &--full#{$call}
+                width: calc(100% - 1px)
+
+    // --------------------------------------------------------
+    // Columns for modern browsers (supporting css-grid)
+    // --------------------------------------------------------
+    &:not(.grid--flex)
+        @supports (display: grid)
+            margin: 0 // reset flexbox margins
+            display: grid
+            grid-template-columns: repeat(#{$grid-sass--columns}, 1fr)
+            @each $call, $rule in $grid-sass--breakpoints
+                +grid-sass--responsive-gap($call, $rule)
+                    grid-gap: grid-sass--gap($call)
+            & > *
+                margin: 0 // reset flexbox margins
+                width: 100% // reset flexbox widths
+
+            @each $call, $rule in $grid-sass--breakpoints
+                +grid-sass--responsive($rule)
+                    @for $index from 1 through $grid-sass--columns
+                        .grid--span-#{$index}#{$call}
+                            grid-column: span #{$index}
+                    .grid--full#{$call}
+                        grid-column: span $grid-sass--columns
+
+
+    // --------------------------------------------------------
+    // Special use case: flexible columns
+    // --------------------------------------------------------
+    @if $grid-sass--flex
+        &--flex
+            @each $call, $rule in $grid-sass--breakpoints
+                @for $index from 1 through $grid-sass--columns
+                    &-#{$index}#{$call} > *
+                        @each $subCall, $subRule in $grid-sass--breakpoints
+                            +grid-sass--responsive-gap($subCall, $subRule, $call)
+                                width: calc(100% / #{$index} - #{grid-sass--gap($subCall)} - 1px)
