@@ -38,7 +38,7 @@ The **grid.sass** package is a tiny and easy to use **Sass file** for creating a
 
 ### CDN
 
-If the [**default configuration**]() for **grid.sass** suits your needs, the recommended way for including the CSS file to your project is via CDN:
+If the [**default configuration**](#%EF%B8%8F-variables) for **grid.sass** suits your needs, the recommended way for including the CSS file to your project is via CDN:
 
 ```html
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/grid.sass/css/grid.css">
@@ -47,7 +47,7 @@ If the [**default configuration**]() for **grid.sass** suits your needs, the rec
 
 ### NPM
 
-If you want to directly include the created classes to your project files or want to [**modify grid.sass**]() feel free to get the package:
+If you want to directly include the created classes to your project files or want to [**modify grid.sass**](#%EF%B8%8F-variables) feel free to get the package:
 
 ```sh
 npm install grid.sass
@@ -87,7 +87,7 @@ The `grid.sass` compiles to a set of classes you can see listed here:
 |`grid--flex`           |Required class for a flexible column layout.                   |
 |`grid--flex-{columns}*`|Defines the amount of columns all children will be placed with.|
 
-*Classes with an  `*` star at the end can be used with a [breakpoint modifier]() like `--t`.*
+*Classes with an  `*` star at the end can be used with a [breakpoint modifier](#grid-sass--breakpoints) like `--t`.*
 
 [**⬆ back to top**](#gridsass)
 
