@@ -287,6 +287,6 @@ $grid-sass--columns: 8
 
 ## 🗝 Licence
 
-Pile is released under the MIT License. See the bundled [LICENSE](LICENSE) file for details.
+Pile is released under the MIT License. See the bundled [LICENSE](LICENSE.md) file for details.
 
 [**⬆ back to top**](#gridsass)

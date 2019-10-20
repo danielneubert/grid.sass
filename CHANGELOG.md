@@ -1,6 +1,12 @@
 # Release Notes
 
-## [Unreleased](https://github.com/danielneubert/grid.sass/compare/v1.0.0...master)
+## [Unreleased](https://github.com/danielneubert/grid.sass/compare/v1.0.1...master)
+
+
+## [v1.0.1 (2019-10-20)](https://github.com/danielneubert/grid.sass/releases/tag/v1.0.1)
+
+### Changed
+- Bump to 1.0.1 ([4c1d8f6](https://github.com/danielneubert/grid.sass/commit/4c1d8f6d7dba0fc2e2a87019091f6586847c8d67))
 
 
 ## [v1.0.0 (2019-10-19)](https://github.com/danielneubert/grid.sass/releases/tag/v1.0.0)
