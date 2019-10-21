@@ -3,6 +3,13 @@
 ## [Unreleased](https://github.com/danielneubert/grid.sass/compare/v1.0.1...master)
 
 
+## [v1.0.3 (2019-10-21)](https://github.com/danielneubert/grid.sass/releases/tag/v1.0.3)
+
+### Changed
+- Update files in `package.json` ([e2df2c6](https://github.com/danielneubert/grid.sass/commit/e2df2c61ebdfcf3a907062f47ecc20c4877c2b5e))
+- Bump to 1.0.3 ([e2df2c6](https://github.com/danielneubert/grid.sass/commit/e2df2c61ebdfcf3a907062f47ecc20c4877c2b5e))
+
+
 ## [v1.0.2 (2019-10-21)](https://github.com/danielneubert/grid.sass/releases/tag/v1.0.2)
 
 ### Changed
