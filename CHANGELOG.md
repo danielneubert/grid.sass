@@ -3,6 +3,14 @@
 ## [Unreleased](https://github.com/danielneubert/grid.sass/compare/v1.0.1...master)
 
 
+## [v1.0.2 (2019-10-21)](https://github.com/danielneubert/grid.sass/releases/tag/v1.0.2)
+
+### Changed
+- Update READEME.md ([12379d9](https://github.com/danielneubert/grid.sass/commit/12379d9eb3d8b9964c311164f7f0276c7580a479))
+- Change output dir to `dist` ([12379d9](https://github.com/danielneubert/grid.sass/commit/12379d9eb3d8b9964c311164f7f0276c7580a479))
+- Bump to 1.0.2 ([12379d9](https://github.com/danielneubert/grid.sass/commit/12379d9eb3d8b9964c311164f7f0276c7580a479))
+
+
 ## [v1.0.1 (2019-10-20)](https://github.com/danielneubert/grid.sass/releases/tag/v1.0.1)
 
 ### Changed
