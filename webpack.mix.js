@@ -1,3 +1,3 @@
 const mix = require('laravel-mix');
 
-mix.sass('sass/grid.sass', 'css')
+mix.sass('sass/grid.sass', 'dist')

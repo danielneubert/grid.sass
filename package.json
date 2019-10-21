@@ -1,6 +1,6 @@
 {
     "name": "grid.sass",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Easy to use grid system for all common browsers including IE 11.",
     "main": "sass/grid.sass",
     "repository": {
@@ -17,7 +17,7 @@
         "LICENSE.md",
         "grid.sass"
     ],
-    "style": "css/grid.css",
+    "style": "dist/grid.css",
     "sass": "sass/grid.sass",
     "keywords": [
         "grid",

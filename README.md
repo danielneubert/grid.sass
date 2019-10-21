@@ -4,13 +4,13 @@
     <a href="https://www.npmjs.com/package/grid.sass">
         <img src="https://img.shields.io/npm/v/grid.sass?color=%2350C322&label=version" alt="Package name">
     </a>
-    <a href="https://cdn.jsdelivr.net/npm/grid.sass/grid.css">
+    <a href="https://cdn.jsdelivr.net/npm/grid.sass/dist/grid.css">
         <img src="https://img.shields.io/jsdelivr/npm/hy/grid.sass?color=%231384C5&label=downloads" alt="Downloads each month">
     </a>
-    <a href="https://cdn.jsdelivr.net/npm/grid.sass/grid.css">
+    <a href="https://www.npmjs.com/package/grid.sass">
         <img src="https://img.shields.io/npm/dt/grid.sass?color=%2337A5DB&label=installations" alt="Downloads each month">
     </a>
-    <a href="https://github.com/danielneubert/grid.sass/blob/dev/LICENSE">
+    <a href="https://github.com/danielneubert/grid.sass/blob/master/LICENSE.md">
         <img src="https://img.shields.io/npm/l/grid.sass?color=%234E9384" alt="Latest Stable Version">
     </a>
 </p>
@@ -41,7 +41,7 @@ The **grid.sass** package is a tiny and easy to use **Sass file** for creating a
 If the [**default configuration**](#%EF%B8%8F-variables) for **grid.sass** suits your needs, the recommended way for including the CSS file to your project is via CDN:
 
 ```html
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/grid.sass/css/grid.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/grid.sass/dist/grid.css">
 ```
 
 
@@ -68,8 +68,8 @@ After that you can easily include **grid.sass** to your Sass or Scss file like s
 
 While not recommended you can also download the project files here:
 
-Get [**grid.css** (compiled version)](https://cdn.jsdelivr.net/npm/grid.sass/grid.css) or 
-[**grid.sass** (raw version)](https://cdn.jsdelivr.net/npm/grid.sass/grid.sass).
+Get [**grid.css** (compiled version)](https://cdn.jsdelivr.net/npm/grid.sass/dist/grid.css) or 
+[**grid.sass** (raw version)](https://cdn.jsdelivr.net/npm/grid.sass).
 
 [**⬆ back to top**](#gridsass)
 
