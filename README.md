@@ -102,9 +102,12 @@ Below you will find some examples using [all classes](#-classes) the **grid.sass
 
 **All examples:**
 
-1. [**Basic Setup**](1-basic-setup)
-2. [**Span Across Multible Columns**](2-span-across-multible-columns)
-3. [**Using Breakpoint Modifiers**](3-using-breakpoint-modifiers)
+1. [**Basic Setup**](#1-basic-setup)
+2. [**Span Across Multible Columns**](#2-span-across-multible-columns)
+3. [**Using Breakpoint Modifiers**](#3-using-breakpoint-modifiers)
+4. [**Flexible Grid Layout**](#4-flexible-grid-layout)
+5. [**Breakpoint Modifiers for grid-flex**](#5-breakpoint-modifiers-for-grid-flex)
+
 
 ### 1. Basic Setup
 
