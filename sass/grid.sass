@@ -120,6 +120,28 @@ $grid-sass--breakpoints: (null: null, '--t': '(max-width: 1299px)', '--m': '(max
                             +grid-sass--responsive($loopRule)
                                 @content
 
+/// Appends the css-grid version of the grid for modern
+/// browsers.
+=grid-sass--css-grid
+    @supports (display: grid)
+        margin: 0 // reset flexbox margins
+        display: grid
+        grid-template-columns: repeat(#{$grid-sass--columns}, 1fr)
+        @each $call, $rule in $grid-sass--breakpoints
+            +grid-sass--responsive-gap($call, $rule)
+                grid-gap: grid-sass--gap($call)
+        & > *
+            margin: 0 // reset flexbox margins
+            width: 100% // reset flexbox widths
+
+        @each $call, $rule in $grid-sass--breakpoints
+            +grid-sass--responsive($rule)
+                @for $index from 1 through $grid-sass--columns
+                    .grid--span-#{$index}#{$call}
+                        grid-column: span #{$index}
+                .grid--full#{$call}
+                    grid-column: span $grid-sass--columns
+
 
 
 // ============================================================
@@ -176,11 +198,15 @@ $grid-sass--breakpoints: (null: null, '--t': '(max-width: 1299px)', '--m': '(max
                     .grid--full#{$call}
                         grid-column: span $grid-sass--columns
 
-
-    // --------------------------------------------------------
-    // Special use case: flexible columns
-    // --------------------------------------------------------
     @if $grid-sass--flex
+        // --------------------------------------------------------
+        // Columns for modern browsers (supporting css-grid)
+        // --------------------------------------------------------
+        &:not(.grid--flex)
+            +grid-sass--css-grid
+        // --------------------------------------------------------
+        // Special use case: flexible columns
+        // --------------------------------------------------------
         &--flex
             @each $call, $rule in $grid-sass--breakpoints
                 @for $index from 1 through $grid-sass--columns
@@ -188,3 +214,8 @@ $grid-sass--breakpoints: (null: null, '--t': '(max-width: 1299px)', '--m': '(max
                         @each $subCall, $subRule in $grid-sass--breakpoints
                             +grid-sass--responsive-gap($subCall, $subRule, $call)
                                 width: calc(100% / #{$index} - #{grid-sass--gap($subCall)} - 1px)
+    @else
+        // --------------------------------------------------------
+        // Columns for modern browsers (supporting css-grid)
+        // --------------------------------------------------------
+        +grid-sass--css-grid
